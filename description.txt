@@ -1,0 +1,15 @@
+Don't you hate it when there's 1% of Corruption/Crimson/Hallow remaining in your world and you can't find it?
+This mod aims to prevent such frustration by adding items to track down the Corruption/Crimson/Hallow biomes.
+
+Features:
+ - Crimson/Corruption/Hallow Compass (Info accessory)
+ - Crimson/Corruption/Hallow magic mirrors (Teleport you near the biomes)
+To-Do:
+ - Map highlighting (this already took me way too long and its still not done, fix your documentation tmodloader)
+ - Fix percentages (Rainbow Compass)
+ - Add more languages
+ - Improve / Clean up the code a bit (even more)
+
+v0.5.5.2 beta (minor bugfix (x2), removed development test code causing error)
+
+https://youtu.be/YjhP4Cnvd6w

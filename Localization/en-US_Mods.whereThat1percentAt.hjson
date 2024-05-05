@@ -1,0 +1,91 @@
+# This file will automatically update with entries for new content after a build and reload
+
+Items: {
+	corruptionCompass: {
+		DisplayName: Corruption Compass
+		Tooltip: Displays the distance to the nearest corrupted block
+	}
+
+	crimsonCompass: {
+		DisplayName: Crimson Compass
+		Tooltip: Displays the distance to the nearest crimson block
+	}
+
+	hallowCompass: {
+		DisplayName: Hallow Compass
+		Tooltip: Displays the distance to the nearest hallow block
+	}
+
+	corruptionMirror: {
+		DisplayName: Purple Magic Mirror
+		Tooltip: Teleports you near the Corruption
+	}
+
+	crimsonMirror: {
+		DisplayName: Red Magic Mirror
+		Tooltip: Teleports you near the Crimson
+	}
+
+	hallowMirror: {
+		DisplayName: Light Blue Magic Mirror
+		Tooltip: Teleports you near the Hallow
+	}
+
+	rainbowCompass: {
+		Tooltip: Displays the distance to every type of impure block and their percentages
+		DisplayName: Rainbow Compass
+	}
+}
+
+noTarget: No {0} found
+noTargetPos:
+	'''
+	ok idk how, but there is no valid space near the {0}.
+	this is weird, because the mod literally checks the whole map.
+	if you think this is a bug, please share your world file and a screenshot with me so i can attempt to fix it.
+	'''
+co: Corruption
+cr: Crimson
+h: Hallow
+
+Configs: {
+	CustomConfig: {
+		randomTp: {
+			Tooltip:
+				'''
+				True = Mirrors teleport to random block
+				False = Mirrors teleport to nearest block
+				'''
+			Label: Random Teleport (Magic mirrors)
+		}
+
+		DisplayName: Config
+
+		percentageUpdateInterval: {
+			Tooltip: How many seconds to wait between each world biome percentage update (might cause very minor lagspikes)
+			Label: World biome percentage update interval
+		}
+	}
+}
+
+percentageCo: "{1} is {0}% corrupted"
+percentageCr: "{1} is {0}% crimson"
+percentageh: "{1} is {0}% hallow"
+
+info: {
+	co: Corruption Compass
+	cr: Crimson Compass
+	h: Hallow Compass
+}
+
+mapHToggle: {
+	0: Off
+	1: Highlighting {$Mods.whereThat1percentAt.co}
+	2: Highlighting {$Mods.whereThat1percentAt.cr}
+	3: Highlighting {$Mods.whereThat1percentAt.h}
+	4: Highlighting all
+}
+
+err: An unexpected error occurred
+restartErr: An unexpected error occurred, please restart the game
+reportErr: An error occurred while world biome percentages, please report this error by uploading your client.log file (Documents/My Games/Terraria/tModLoader/Logs) to pastebin.com and sending the url in the steam comments (https://steamcommunity.com/sharedfiles/filedetails/?id=3218574891)
