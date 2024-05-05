@@ -89,3 +89,9 @@ mapHToggle: {
 err: An unexpected error occurred
 restartErr: An unexpected error occurred, please restart the game
 reportErr: An error occurred while world biome percentages, please report this error by uploading your client.log file (Documents/My Games/Terraria/tModLoader/Logs) to pastebin.com and sending the url in the steam comments (https://steamcommunity.com/sharedfiles/filedetails/?id=3218574891)
+
+InfoDisplays: {
+	"Corruption Compass.DisplayName": Corruption  Compass
+	"Crimson Compass.DisplayName": Crimson  Compass
+	"Hallow Compass.DisplayName": Hallow  Compass
+}
