@@ -10,7 +10,7 @@ To-Do:
  - Add more languages
  - Improve / Clean up the code a bit (even more)
 
-v0.5.5.3 beta (uploaded code to github)
+v0.5.5.4 beta (uploaded code to github, fixed minor localization issue)
 
 https://github.com/baerchen201/whereThat1percentAt
 https://youtu.be/YjhP4Cnvd6w
