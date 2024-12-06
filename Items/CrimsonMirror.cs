@@ -9,14 +9,14 @@ using whereThat1percentAt.Content;
 
 namespace whereThat1percentAt.Items
 {
-    public class corruptionMirror : ModItem
+    public class CrimsonMirror : ModItem
     {
-        public override string Texture => Textures.corruptionMirror;
+        public override string Texture => Textures.crimsonMirror;
 
         public override void SetDefaults()
         {
             Item.CloneDefaults(ItemID.MagicMirror);
-            Item.value = Item.value + new Item(ItemID.RottenChunk).value + 1;
+            Item.value = Item.value + new Item(ItemID.Vertebrae).value + 1;
             Item.rare = ItemRarityID.Green;
         }
 
@@ -24,7 +24,7 @@ namespace whereThat1percentAt.Items
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.MagicMirror);
-            recipe.AddIngredient(ItemID.RottenChunk, 5);
+            recipe.AddIngredient(ItemID.Vertebrae, 5);
             recipe.AddTile(TileID.WorkBenches);
             recipe.Register();
         }
@@ -34,13 +34,13 @@ namespace whereThat1percentAt.Items
             Tuple<Tile, Vector2> tile = null;
             if (ModContent.GetInstance<CustomConfig>().randomTp)
             {
-                tile = Scripts.getRandomTileOfType(Lists.Corruption, player);
+                tile = Scripts.getRandomTileOfType(Lists.Crimson, player);
             }
             else
             {
                 Tuple<Tile, Vector2, float> tmp = Scripts.getClosestTileOfType(
                     player,
-                    Lists.Corruption
+                    Lists.Crimson
                 );
                 tile = new Tuple<Tile, Vector2>(tmp.Item1, tmp.Item2);
             }
@@ -56,7 +56,7 @@ namespace whereThat1percentAt.Items
                     ChatHelper.DisplayMessageOnClient(
                         NetworkText.FromKey(
                             "Mods.whereThat1percentAt.noTargetPos",
-                            Language.GetTextValue("Mods.whereThat1percentAt.co")
+                            Language.GetTextValue("Mods.whereThat1percentAt.cr")
                         ),
                         Color.Red,
                         player.whoAmI
@@ -68,7 +68,7 @@ namespace whereThat1percentAt.Items
                 ChatHelper.DisplayMessageOnClient(
                     NetworkText.FromKey(
                         "Mods.whereThat1percentAt.noTarget",
-                        Language.GetTextValue("Mods.whereThat1percentAt.co")
+                        Language.GetTextValue("Mods.whereThat1percentAt.cr")
                     ),
                     Color.Yellow,
                     player.whoAmI

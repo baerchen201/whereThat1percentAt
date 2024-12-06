@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Chat;
@@ -9,23 +10,23 @@ using Terraria.ModLoader;
 
 namespace whereThat1percentAt.Content
 {
-    public class crimsonCompassInfo : InfoDisplay
+    public class CorruptionCompassInfo : InfoDisplay
     {
-        public override string Texture => Textures.crimsonCompassInfo;
-        public override string Name => Language.GetTextValue("Mods.whereThat1percentAt.info.cr");
+        public override string Texture => Textures.corruptionCompassInfo;
+        public override string Name => Language.GetTextValue("Mods.whereThat1percentAt.info.co");
 
         public int range = 125;
 
         public override bool Active()
         {
-            return Main.LocalPlayer.GetModPlayer<CustomPlayer>().showCrimsonCompass;
+            return Main.LocalPlayer.GetModPlayer<CustomPlayer>().showCorruptionCompass;
         }
 
         public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
         {
             Tuple<Tile, Vector2, float> ret = Scripts.getClosestTileOfType(
                 Main.LocalPlayer,
-                Lists.Crimson,
+                Lists.Corruption,
                 Tuple.Create(range, range)
             );
 
@@ -34,9 +35,9 @@ namespace whereThat1percentAt.Content
                     try
                     {
                         return Language.GetTextValue(
-                            "Mods.whereThat1percentAt.percentageCr",
+                            "Mods.whereThat1percentAt.percentageCo",
                             Main.LocalPlayer.GetModPlayer<CustomPlayer>()
-                                .percentages["cr"]
+                                .percentages["co"]
                                 .ToString(),
                             Main.worldName
                         );
@@ -46,11 +47,11 @@ namespace whereThat1percentAt.Content
                         return _FixDisplayValue(ref displayColor, ref displayShadowColor);
                     }
                 else
-                    return "No crimson nearby";
+                    return "No corruption nearby";
 
             int distance = (int)Math.Round(ret.Item3 / 16);
             if (distance > 5)
-                return $"Crimson {distance} tiles away";
+                return $"Corruption {distance} tiles away";
             else
                 return $"{Language.GetTextValue(TileID.Search.GetName(ret.Item1.TileType))} nearby";
         }
@@ -81,8 +82,8 @@ namespace whereThat1percentAt.Content
                 player.forceUpdate = true;
                 player.PostUpdate();
                 return Language.GetTextValue(
-                    "Mods.whereThat1percentAt.percentageCr",
-                    player.percentages["cr"].ToString(),
+                    "Mods.whereThat1percentAt.percentageCo",
+                    player.percentages["co"].ToString(),
                     Main.worldName
                 );
             }

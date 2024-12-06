@@ -8,7 +8,7 @@ using Terraria.Localization;
 
 namespace whereThat1percentAt.Content
 {
-    class Scripts
+    static class Scripts
     {
         public static void SendDebugChatMessage(string text, Color? color)
         {
@@ -314,7 +314,7 @@ namespace whereThat1percentAt.Content
         public static List<int> Hallow = TileID.Sets.HallowCountCollection;
     }
 
-    class Textures
+    static class Textures
     {
         public static string placeholder = "whereThat1percentAt/default";
         public static string corruptionCompassInfo =

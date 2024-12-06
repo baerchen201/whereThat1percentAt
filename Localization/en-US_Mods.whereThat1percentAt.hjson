@@ -35,6 +35,41 @@ Items: {
 		Tooltip: Displays the distance to every type of impure block and their percentages
 		DisplayName: Rainbow Compass
 	}
+
+	CorruptionCompass: {
+		DisplayName: Corruption Compass
+		Tooltip: ""
+	}
+
+	CorruptionMirror: {
+		DisplayName: Corruption Mirror
+		Tooltip: ""
+	}
+
+	CrimsonCompass: {
+		DisplayName: Crimson Compass
+		Tooltip: ""
+	}
+
+	CrimsonMirror: {
+		DisplayName: Crimson Mirror
+		Tooltip: ""
+	}
+
+	HallowCompass: {
+		DisplayName: Hallow Compass
+		Tooltip: ""
+	}
+
+	HallowMirror: {
+		DisplayName: Hallow Mirror
+		Tooltip: ""
+	}
+
+	RainbowCompass: {
+		DisplayName: Rainbow Compass
+		Tooltip: ""
+	}
 }
 
 noTarget: No {0} found

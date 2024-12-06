@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace whereThat1percentAt.Items
 {
-    public abstract class baseModCompass : ModItem
+    public abstract class BaseModCompass : ModItem
     {
         public abstract short CompassItem { get; }
 

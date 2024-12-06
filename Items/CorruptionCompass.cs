@@ -4,7 +4,7 @@ using whereThat1percentAt.Content;
 
 namespace whereThat1percentAt.Items
 {
-    public class corruptionCompass : baseModCompass
+    public class CorruptionCompass : BaseModCompass
     {
         public override string Texture => Textures.corruptionCompass;
         public override short CompassItem => ItemID.RottenChunk;

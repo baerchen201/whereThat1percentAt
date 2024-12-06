@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace whereThat1percentAt.Content
 {
-    public class hallowCompassInfo : InfoDisplay
+    public class HallowCompassInfo : InfoDisplay
     {
         public override string Texture => Textures.hallowCompassInfo;
         public override string Name => Language.GetTextValue("Mods.whereThat1percentAt.info.h");

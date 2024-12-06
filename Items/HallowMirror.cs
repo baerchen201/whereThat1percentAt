@@ -9,7 +9,7 @@ using whereThat1percentAt.Content;
 
 namespace whereThat1percentAt.Items
 {
-    public class hallowMirror : ModItem
+    public class HallowMirror : ModItem
     {
         public override string Texture => Textures.hallowMirror;
 

@@ -5,7 +5,7 @@ using whereThat1percentAt.Content;
 
 namespace whereThat1percentAt.Items
 {
-    public class rainbowCompass : ModItem
+    public class RainbowCompass : ModItem
     {
         public override string Texture => Textures.rainbowCompass;
 
@@ -24,9 +24,9 @@ namespace whereThat1percentAt.Items
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<corruptionCompass>());
-            recipe.AddIngredient(ModContent.ItemType<crimsonCompass>());
-            recipe.AddIngredient(ModContent.ItemType<hallowCompass>());
+            recipe.AddIngredient(ModContent.ItemType<CorruptionCompass>());
+            recipe.AddIngredient(ModContent.ItemType<CrimsonCompass>());
+            recipe.AddIngredient(ModContent.ItemType<HallowCompass>());
             recipe.AddTile(TileID.TinkerersWorkbench);
             recipe.Register();
         }
