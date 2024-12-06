@@ -75,9 +75,8 @@ Items: {
 noTarget: No {0} found
 noTargetPos:
 	'''
-	ok idk how, but there is no valid space near the {0}.
-	this is weird, because the mod literally checks the whole map.
-	if you think this is a bug, please share your world file and a screenshot with me so i can attempt to fix it.
+	No valid teleport point near {0} found.
+	If you believe this is a bug, please report this issue on https://github.com/baerchen201/whereThat1percentAt/issues.
 	'''
 co: Corruption
 cr: Crimson
@@ -123,7 +122,7 @@ mapHToggle: {
 
 err: An unexpected error occurred
 restartErr: An unexpected error occurred, please restart the game
-reportErr: An error occurred while world biome percentages, please report this error by uploading your client.log file (Documents/My Games/Terraria/tModLoader/Logs) to pastebin.com and sending the url in the steam comments (https://steamcommunity.com/sharedfiles/filedetails/?id=3218574891)
+reportErr: An error occurred. Please report an issue on https://github.com/baerchen201/whereThat1percentAt/issues and attach your client.log file (located in "Documents/My Games/Terraria/tModLoader/Logs")
 
 InfoDisplays: {
 	"Corruption Compass.DisplayName": Corruption Compass
