@@ -316,7 +316,7 @@ namespace whereThat1percentAt.Content
 
     static class Textures
     {
-        public static string placeholder = "whereThat1percentAt/default";
+        public static string placeholder = "whereThat1percentAt/Textures/missing";
         public static string corruptionCompassInfo =
             "whereThat1percentAt/Textures/Corruption_Compass_toggle";
         public static string corruptionCompass = "whereThat1percentAt/Textures/CorruptionCompass";
