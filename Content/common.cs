@@ -183,7 +183,7 @@ namespace whereThat1percentAt.Content
                                             && new List<int>()
                                             {
                                                 LiquidID.Lava,
-                                                LiquidID.Shimmer
+                                                LiquidID.Shimmer,
                                             }.Contains(Main.tile[x2, y2].LiquidType)
                                         )
                                     )
