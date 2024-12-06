@@ -1,0 +1,95 @@
+using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.Map;
+using Terraria.ModLoader;
+
+namespace whereThat1percentAt.Content
+{
+    public class MapHighlightToggle : BuilderToggle
+    {
+        public override string Texture => Textures.placeholder;
+
+        public static List<string> TextureList = new List<string>()
+        {
+            Textures.mapHighlightToggle,
+            Textures.mapHighlightToggleCo,
+            Textures.mapHighlightToggleCr,
+            Textures.mapHighlightToggleH,
+            Textures.mapHighlightToggleAll
+        };
+
+        public string getTexture()
+        {
+            try
+            {
+                return TextureList[CurrentState];
+            }
+            catch (Exception)
+            {
+                return Textures.mapHighlightToggle;
+            }
+        }
+
+        public override bool Active() => true;
+
+        public override int NumberOfStates => 5;
+
+        public override string DisplayValue() =>
+            Language.GetTextValue("Mods.whereThat1percentAt.mapHToggle." + CurrentState);
+
+        public void Update(CustomPlayer player)
+        {
+            Scripts.SendDebugChatMessage($"update: {CurrentState}");
+            if (CurrentState == 0)
+                for (int x = 0; x < Main.tile.Width; x++)
+                for (int y = 0; y < Main.tile.Height; y++)
+                    Main.Map.UpdateType(x, y);
+            if (CurrentState != 4)
+            {
+                List<int> filter = new List<List<int>>()
+                {
+                    Lists.Corruption,
+                    Lists.Crimson,
+                    Lists.Hallow
+                }[CurrentState - 1];
+                List<List<Tuple<Tuple<int, int>, Tile>>> list = Scripts
+                    .countWorldTilePercentage(filter)
+                    .Item1;
+                foreach (Tuple<Tuple<int, int>, Tile> tile in list[0])
+                {
+                    player.MapTiles[tile.Item1] = MapTile.Create(TileID.Crimstone, 255, 1);
+                }
+            }
+            else
+            {
+                Scripts.SendDebugChatMessage($"update all");
+
+                List<List<Tuple<Tuple<int, int>, Tile>>> list = Scripts
+                    .countWorldTilePercentage(Lists.Corruption, Lists.Crimson, Lists.Hallow)
+                    .Item1;
+                foreach (Tuple<Tuple<int, int>, Tile> tile in list[0])
+                {
+                    player.MapTiles[tile.Item1] = MapTile.Create(TileID.Crimstone, 255, 1);
+                }
+            }
+        }
+
+        public override bool OnLeftClick(ref SoundStyle? sound)
+        {
+            CustomPlayer player = Main.LocalPlayer.GetModPlayer<CustomPlayer>();
+            player.forceUpdate = true;
+            return true;
+        }
+
+        public override void OnRightClick()
+        {
+            CustomPlayer player = Main.LocalPlayer.GetModPlayer<CustomPlayer>();
+            player.forceUpdate = true;
+        }
+    }
+}
