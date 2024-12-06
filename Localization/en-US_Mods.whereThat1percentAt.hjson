@@ -1,5 +1,3 @@
-# This file will automatically update with entries for new content after a build and reload
-
 Items: {
 	corruptionCompass: {
 		DisplayName: Corruption Compass
@@ -38,37 +36,37 @@ Items: {
 
 	CorruptionCompass: {
 		DisplayName: Corruption Compass
-		Tooltip: ""
-	}
-
-	CorruptionMirror: {
-		DisplayName: Corruption Mirror
-		Tooltip: ""
+		Tooltip: Displays the distance to the nearest corruption block
 	}
 
 	CrimsonCompass: {
 		DisplayName: Crimson Compass
-		Tooltip: ""
-	}
-
-	CrimsonMirror: {
-		DisplayName: Crimson Mirror
-		Tooltip: ""
+		Tooltip: Displays the distance to the nearest crimson block
 	}
 
 	HallowCompass: {
 		DisplayName: Hallow Compass
-		Tooltip: ""
+		Tooltip: Displays the distance to the nearest hallow block
+	}
+
+	CorruptionMirror: {
+		DisplayName: Corruption Magic Mirror
+		Tooltip: Teleports you near the Corruption
+	}
+
+	CrimsonMirror: {
+		DisplayName: Crimson Magic Mirror
+		Tooltip: Teleports you near the Crimson
 	}
 
 	HallowMirror: {
-		DisplayName: Hallow Mirror
-		Tooltip: ""
+		DisplayName: Hallow Magic Mirror
+		Tooltip: Teleports you near the Hallow
 	}
 
 	RainbowCompass: {
 		DisplayName: Rainbow Compass
-		Tooltip: ""
+		Tooltip: Displays the distance to every type of world corruption
 	}
 }
 
