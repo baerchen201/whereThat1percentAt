@@ -8,7 +8,7 @@ To-Do:
  - Map highlighting (this already took me way too long and its still not done, fix your documentation tmodloader)
  - Fix percentages (Rainbow Compass)
 
-Version: v0.6
+Version: v0.6.0.1
   Changes:
    - Clean up code
    - Fix some localization issues
@@ -17,6 +17,7 @@ Version: v0.6
       Any Items created before this version will still function, however they
       will not recieve localization updates and can not be used in recipes.
       This may be fixed in a future update, please don't report this as a bug.
+   - Remaster icon
 
 If you want to report a bug or request a feature, you can do so on https://github.com/baerchen201/whereThat1percentAt/issues.
 
