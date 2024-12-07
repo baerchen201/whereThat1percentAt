@@ -34,7 +34,6 @@ Items: {
 		DisplayName: Rainbow Compass (Deprecated Item)
 	}
 
-
 	CorruptionCompass: {
 		DisplayName: Corruption Compass
 		Tooltip: Displays the distance to the nearest corruption block
@@ -77,9 +76,6 @@ noTargetPos:
 	No valid teleport point near {0} found.
 	If you believe this is a bug, please report this issue on https://github.com/baerchen201/whereThat1percentAt/issues.
 	'''
-co: Corruption
-cr: Crimson
-h: Hallow
 
 Configs: {
 	CustomConfig: {
@@ -101,14 +97,14 @@ Configs: {
 	}
 }
 
-percentageCo: "{1} is {0}% corrupted"
-percentageCr: "{1} is {0}% crimson"
-percentageh: "{1} is {0}% hallow"
+co: Corruption
+cr: Crimson
+h: Hallow
 
-info: {
-	co: Corruption Compass
-	cr: Crimson Compass
-	h: Hallow Compass
+percentage: {
+	co: "{1} is {0}% corrupted"
+	cr: "{1} is {0}% crimson"
+	h: "{1} is {0}% hallow"
 }
 
 mapHToggle: {
