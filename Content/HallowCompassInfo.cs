@@ -8,7 +8,7 @@ namespace whereThat1percentAt.Content
         public override string Texture => Textures.hallowCompassInfo;
 
         public override List<int> Tiles => Lists.Hallow;
-        public override string TileName => "h";
+        public override string Name => "h";
 
         public override bool Active()
         {

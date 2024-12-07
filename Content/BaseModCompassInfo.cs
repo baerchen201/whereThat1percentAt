@@ -14,10 +14,11 @@ namespace whereThat1percentAt.Content
         public virtual int Range => 125;
 
         public abstract List<int> Tiles { get; }
-        public abstract string TileName { get; }
-        public string RealTileName => Language.GetTextValue("Mods.whereThat1percentAt." + TileName);
+        public abstract override string Name { get; }
+        public string RealName => Language.GetTextValue("Mods.whereThat1percentAt." + Name);
 
-        public override string Name => $"{RealTileName} Compass";
+        public override LocalizedText DisplayName =>
+            Language.GetText("Mods.whereThat1percentAt.compassInfo").WithFormatArgs(RealName);
 
         public abstract override bool Active();
 
@@ -34,9 +35,9 @@ namespace whereThat1percentAt.Content
                     try
                     {
                         return Language.GetTextValue(
-                            "Mods.whereThat1percentAt.percentage." + TileName,
+                            "Mods.whereThat1percentAt.percentage." + Name,
                             Main.LocalPlayer.GetModPlayer<CustomPlayer>()
-                                .percentages[TileName]
+                                .percentages[Name]
                                 .ToString(),
                             Main.worldName
                         );
@@ -46,11 +47,11 @@ namespace whereThat1percentAt.Content
                         return _FixDisplayValue();
                     }
                 else
-                    return $"No {RealTileName} nearby";
+                    return $"No {RealName} nearby";
 
             int distance = (int)Math.Round(ret.Item3 / 16);
             if (distance > 5)
-                return $"{RealTileName} {distance} tiles away";
+                return $"{RealName} {distance} tiles away";
             else
                 return $"{Language.GetTextValue(TileID.Search.GetName(ret.Item1.TileType))} nearby";
         }
@@ -81,8 +82,8 @@ namespace whereThat1percentAt.Content
                 player.forceUpdate = true;
                 player.PostUpdate();
                 return Language.GetTextValue(
-                    "Mods.whereThat1percentAt.percentage." + TileName,
-                    player.percentages[TileName].ToString(),
+                    "Mods.whereThat1percentAt.percentage." + Name,
+                    player.percentages[Name].ToString(),
                     Main.worldName
                 );
             }

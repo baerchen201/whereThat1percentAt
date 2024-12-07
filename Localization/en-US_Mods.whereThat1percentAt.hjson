@@ -97,6 +97,7 @@ Configs: {
 	}
 }
 
+compassInfo: "{0} Compass"
 co: Corruption
 cr: Crimson
 h: Hallow
@@ -118,9 +119,3 @@ mapHToggle: {
 err: An unexpected error occurred
 restartErr: An unexpected error occurred, please restart the game
 reportErr: An error occurred. Please report an issue on https://github.com/baerchen201/whereThat1percentAt/issues and attach your client.log file (located in "Documents/My Games/Terraria/tModLoader/Logs")
-
-InfoDisplays: {
-	"Corruption Compass.DisplayName": Corruption Compass
-	"Crimson Compass.DisplayName": Crimson Compass
-	"Hallow Compass.DisplayName": Hallow Compass
-}

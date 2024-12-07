@@ -8,7 +8,7 @@ namespace whereThat1percentAt.Content
         public override string Texture => Textures.crimsonCompassInfo;
 
         public override List<int> Tiles => Lists.Crimson;
-        public override string TileName => "cr";
+        public override string Name => "cr";
 
         public override bool Active()
         {

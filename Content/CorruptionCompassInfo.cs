@@ -8,7 +8,7 @@ namespace whereThat1percentAt.Content
         public override string Texture => Textures.corruptionCompassInfo;
 
         public override List<int> Tiles => Lists.Corruption;
-        public override string TileName => "co";
+        public override string Name => "co";
 
         public override bool Active()
         {
