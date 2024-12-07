@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
+using whereThat1percentAt.Items;
 
 namespace whereThat1percentAt.Content
 {
@@ -82,6 +83,15 @@ namespace whereThat1percentAt.Content
             }
             else
                 updateCooldown--;
+        }
+
+        public override void PreUpdate()
+        {
+            for (int i = 0; i < Player.inventory.Length; i++)
+            {
+                LegacyReplacements.replacePlayerItemIfLegacyItem(Player, i);
+            }
+            base.PreUpdate();
         }
     }
 }

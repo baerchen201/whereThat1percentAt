@@ -1,38 +1,39 @@
 Items: {
 	corruptionCompass: {
-		DisplayName: Corruption Compass
+		DisplayName: Corruption Compass (Deprecated Item)
 		Tooltip: Displays the distance to the nearest corrupted block
 	}
 
 	crimsonCompass: {
-		DisplayName: Crimson Compass
+		DisplayName: Crimson Compass (Deprecated Item)
 		Tooltip: Displays the distance to the nearest crimson block
 	}
 
 	hallowCompass: {
-		DisplayName: Hallow Compass
+		DisplayName: Hallow Compass (Deprecated Item)
 		Tooltip: Displays the distance to the nearest hallow block
 	}
 
 	corruptionMirror: {
-		DisplayName: Purple Magic Mirror
+		DisplayName: Purple Magic Mirror (Deprecated Item)
 		Tooltip: Teleports you near the Corruption
 	}
 
 	crimsonMirror: {
-		DisplayName: Red Magic Mirror
+		DisplayName: Red Magic Mirror (Deprecated Item)
 		Tooltip: Teleports you near the Crimson
 	}
 
 	hallowMirror: {
-		DisplayName: Light Blue Magic Mirror
+		DisplayName: Light Blue Magic Mirror (Deprecated Item)
 		Tooltip: Teleports you near the Hallow
 	}
 
 	rainbowCompass: {
 		Tooltip: Displays the distance to every type of impure block and their percentages
-		DisplayName: Rainbow Compass
+		DisplayName: Rainbow Compass (Deprecated Item)
 	}
+
 
 	CorruptionCompass: {
 		DisplayName: Corruption Compass
