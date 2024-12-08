@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Chat;
@@ -53,7 +54,15 @@ namespace whereThat1percentAt.Content
             if (distance > 5)
                 return $"{RealName} {distance} tiles away";
             else
-                return $"{Language.GetTextValue(TileID.Search.GetName(ret.Item1.TileType))} nearby";
+            {
+                StringBuilder _ = new StringBuilder();
+                foreach (char i in TileID.Search.GetName(ret.Item1.TileType))
+                    if (char.IsUpper(i) && _.Length > 0)
+                        _.Append(" " + i);
+                    else
+                        _.Append(i);
+                return $"{_} nearby";
+            }
         }
 
         bool fixFailed = false;
