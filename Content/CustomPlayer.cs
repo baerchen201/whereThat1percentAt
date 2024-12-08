@@ -91,7 +91,7 @@ namespace whereThat1percentAt.Content
         {
             for (int i = 0; i < Player.inventory.Length; i++)
             {
-                LegacyReplacements.replacePlayerItemIfLegacyItem(Player, i);
+                LegacyReplacements.replacePlayerLegacyItem(Player, i);
             }
             base.PreUpdate();
         }
