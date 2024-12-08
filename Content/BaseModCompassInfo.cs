@@ -7,6 +7,8 @@ using Terraria.Chat;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using Terraria.ModLoader.Config;
+using tModPorter;
 
 namespace whereThat1percentAt.Content
 {
@@ -23,6 +25,8 @@ namespace whereThat1percentAt.Content
 
         public abstract override bool Active();
 
+        bool updatedOnDisplayPercentage = true;
+
         public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
         {
             Tuple<Tile, Vector2, float> ret = Scripts.getClosestTileOfType(
@@ -33,6 +37,15 @@ namespace whereThat1percentAt.Content
 
             if (ret == null || (int)Math.Round(ret.Item3 / 16) > Range)
                 if (Main.LocalPlayer.GetModPlayer<CustomPlayer>().showPercentages)
+                {
+                    if (
+                        !updatedOnDisplayPercentage
+                        && ModContent.GetInstance<CustomConfig>().updateOnDisplay
+                    )
+                    {
+                        Main.LocalPlayer.GetModPlayer<CustomPlayer>().ForceUpdate = true;
+                        updatedOnDisplayPercentage = true;
+                    }
                     try
                     {
                         return Language.GetTextValue(
@@ -47,8 +60,11 @@ namespace whereThat1percentAt.Content
                     {
                         return _FixDisplayValue();
                     }
+                }
                 else
                     return $"No {RealName} nearby";
+            else
+                updatedOnDisplayPercentage = false;
 
             int distance = (int)Math.Round(ret.Item3 / 16);
             if (distance > 5)
@@ -88,7 +104,7 @@ namespace whereThat1percentAt.Content
                         "Automatic fix failed, preventing lag from updating on each frame"
                     );
                 }
-                player.forceUpdate = true;
+                player.ForceUpdate = true;
                 player.PostUpdate();
                 return Language.GetTextValue(
                     "Mods.whereThat1percentAt.percentage." + Name,

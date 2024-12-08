@@ -80,19 +80,24 @@ noTargetPos:
 Configs: {
 	CustomConfig: {
 		randomTp: {
+			Label: Random Teleport (Magic mirrors)
 			Tooltip:
 				'''
 				True = Mirrors teleport to random block
 				False = Mirrors teleport to nearest block
 				'''
-			Label: Random Teleport (Magic mirrors)
 		}
 
 		DisplayName: Config
 
 		percentageUpdateInterval: {
-			Tooltip: How many seconds to wait between each world biome percentage update (might cause very minor lagspikes)
 			Label: World biome percentage update interval
+			Tooltip: How many seconds to wait between each world biome percentage update (might cause minor lagspikes)
+		}
+
+		updateOnDisplay: {
+			Label: Update percentages every time they are displayed
+			Tooltip: Forces a world biome percentage update every time the percentage is shown (might cause lagspikes)
 		}
 	}
 }

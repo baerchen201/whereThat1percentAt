@@ -14,7 +14,13 @@ namespace whereThat1percentAt.Content
         public bool showPercentages;
 
         private int updateCooldown = 0;
-        public bool forceUpdate = true;
+
+        public bool ForceUpdate
+        {
+            get { return forceUpdate; }
+            set { forceUpdate = true; }
+        }
+        bool forceUpdate = true;
 
         public Dictionary<string, string> percentages = new Dictionary<string, string>();
 
@@ -39,12 +45,6 @@ namespace whereThat1percentAt.Content
         }
 
         public override void PostUpdate()
-        {
-            _PostUpdate();
-            forceUpdate = false;
-        }
-
-        public void _PostUpdate()
         {
             if (updateCooldown < 1 || forceUpdate)
             {
@@ -83,6 +83,8 @@ namespace whereThat1percentAt.Content
             }
             else
                 updateCooldown--;
+
+            forceUpdate = false;
         }
 
         public override void PreUpdate()

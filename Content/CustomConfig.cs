@@ -14,5 +14,8 @@ namespace whereThat1percentAt.Content
         [DefaultValue(120)]
         [Range(5, 600)]
         public int percentageUpdateInterval;
+
+        [DefaultValue(true)]
+        public bool updateOnDisplay;
     }
 }
