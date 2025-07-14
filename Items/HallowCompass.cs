@@ -6,7 +6,7 @@ namespace whereThat1percentAt.Items;
 
 public class HallowCompass : BaseModCompass
 {
-    public override string Texture => Textures.hallowCompass;
+    public override string Texture => Textures.HALLOW_COMPASS;
     public override short CompassItem => ItemID.LightShard;
 
     public override void UpdateInfoAccessory(Player player)

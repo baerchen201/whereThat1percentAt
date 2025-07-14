@@ -7,7 +7,7 @@ namespace whereThat1percentAt.Items;
 
 public class HallowMirror : BaseModMirror
 {
-    public override string Texture => Textures.hallowMirror;
+    public override string Texture => Textures.HALLOW_MIRROR;
 
     public override short MirrorItem => ItemID.LightShard;
     public override List<int> Tiles => TileID.Sets.HallowCountCollection;

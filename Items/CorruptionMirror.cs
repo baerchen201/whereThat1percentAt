@@ -7,7 +7,7 @@ namespace whereThat1percentAt.Items;
 
 public class CorruptionMirror : BaseModMirror
 {
-    public override string Texture => Textures.corruptionMirror;
+    public override string Texture => Textures.CORRUPTION_MIRROR;
 
     public override short MirrorItem => ItemID.RottenChunk;
     public override List<int> Tiles => TileID.Sets.CorruptCountCollection;

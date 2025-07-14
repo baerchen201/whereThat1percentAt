@@ -7,7 +7,7 @@ namespace whereThat1percentAt.Items;
 
 public class CrimsonMirror : BaseModMirror
 {
-    public override string Texture => Textures.crimsonMirror;
+    public override string Texture => Textures.CRIMSON_MIRROR;
     public override short MirrorItem => ItemID.Vertebrae;
     public override List<int> Tiles => TileID.Sets.CrimsonCountCollection;
     public override string TargetName => Language.GetTextValue("Mods.whereThat1percentAt.cr"); // TODO: Replace with localization from game

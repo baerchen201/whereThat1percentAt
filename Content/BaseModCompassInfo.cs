@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Chat;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -12,109 +12,65 @@ namespace whereThat1percentAt.Content
 {
     public abstract class BaseModCompassInfo : InfoDisplay
     {
-        public virtual int Range => 125;
-
+        public virtual float Range => 125f;
         public abstract List<int> Tiles { get; }
-        public abstract override string Name { get; }
-        public string RealName => Language.GetTextValue("Mods.whereThat1percentAt." + Name);
+        public abstract string TargetName { get; }
+        public abstract string Percentage { get; }
 
         public override LocalizedText DisplayName =>
-            Language.GetText("Mods.whereThat1percentAt.compassInfo").WithFormatArgs(RealName);
+            Language.GetText("Mods.whereThat1percentAt.compassInfo").WithFormatArgs(TargetName);
 
         public abstract override bool Active();
 
-        bool updatedOnDisplayPercentage = true;
+        private bool hasUpdated;
 
         public override string DisplayValue(ref Color displayColor, ref Color displayShadowColor)
         {
-            Tuple<Tile, Vector2, float> ret = Scripts.getClosestTileOfType(
-                Main.LocalPlayer,
-                Tiles,
-                Tuple.Create(Range, Range)
-            );
-
-            if (ret == null || (int)Math.Round(ret.Item3 / 16) > Range)
+            if (
+                !Main.tile.GetClosestTileOfType(
+                    Main.LocalPlayer.Center.WorldToTileSpace(),
+                    Tiles,
+                    out var tile,
+                    out var distance
+                )
+                || distance > Range
+            )
                 if (Main.LocalPlayer.GetModPlayer<CustomPlayer>().showPercentages)
                 {
-                    if (
-                        !updatedOnDisplayPercentage
-                        && ModContent.GetInstance<CustomConfig>().updateOnDisplay
-                    )
+                    if (!hasUpdated && ModContent.GetInstance<CustomConfig>().updateOnDisplay)
                     {
                         Main.LocalPlayer.GetModPlayer<CustomPlayer>().ForceUpdate = true;
-                        updatedOnDisplayPercentage = true;
+                        hasUpdated = true;
                     }
-                    try
-                    {
-                        return Language.GetTextValue(
-                            "Mods.whereThat1percentAt.percentage." + Name,
-                            Main.LocalPlayer.GetModPlayer<CustomPlayer>()
-                                .percentages[Name]
-                                .ToString(),
-                            Main.worldName
-                        );
-                    }
-                    catch (KeyNotFoundException)
-                    {
-                        return _FixDisplayValue();
-                    }
+
+                    return Percentage;
                 }
                 else
-                    return $"No {RealName} nearby";
+                    return $"No {TargetName} nearby";
             else
-                updatedOnDisplayPercentage = false;
+                hasUpdated = false;
 
-            int distance = (int)Math.Round(ret.Item3 / 16);
             if (distance > 5)
-                return $"{RealName} {distance} tiles away";
-            else
-            {
-                StringBuilder _ = new StringBuilder();
-                foreach (char i in TileID.Search.GetName(ret.Item1.TileType))
-                    if (char.IsUpper(i) && _.Length > 0)
-                        _.Append(" " + i);
-                    else
-                        _.Append(i);
-                return $"{_} nearby";
-            }
+                return $"{TargetName} {Math.Ceiling(distance)} tiles away";
+
+            StringBuilder blockName = new StringBuilder();
+            foreach (char i in TileID.Search.GetName(tile.Tile.TileType))
+                if (char.IsUpper(i) && blockName.Length > 0)
+                    blockName.Append(" " + i);
+                else
+                    blockName.Append(i);
+            return $"{blockName} nearby";
         }
 
-        bool fixFailed = false;
-        bool reportMessageSent = false;
-
-        string _FixDisplayValue()
+        protected static string _PercentageString(double? percentage)
         {
-            CustomPlayer player = Main.LocalPlayer.GetModPlayer<CustomPlayer>();
-            try
-            {
-                if (fixFailed)
-                {
-                    if (!reportMessageSent)
-                    {
-                        ChatHelper.DisplayMessageOnClient(
-                            NetworkText.FromKey("Mods.whereThat1percentAt.reportErr"),
-                            Color.Cyan,
-                            Main.LocalPlayer.whoAmI
-                        );
-                        reportMessageSent = true;
-                    }
-                    throw new KeyNotFoundException(
-                        "Automatic fix failed, preventing lag from updating on each frame"
-                    );
-                }
-                player.ForceUpdate = true;
-                player.PostUpdate();
-                return Language.GetTextValue(
-                    "Mods.whereThat1percentAt.percentage." + Name,
-                    player.percentages[Name].ToString(),
-                    Main.worldName
-                );
-            }
-            catch (KeyNotFoundException)
-            {
-                fixFailed = true;
-                return Language.GetTextValue("Mods.whereThat1percentAt.restartErr");
-            }
+            if (percentage == null)
+                return "null";
+            percentage *= 100d;
+            var roundedPercentage = Math.Round(percentage.Value, 2);
+            if (roundedPercentage <= 0 && percentage > 0)
+                return "<0.01";
+            return roundedPercentage.ToString(CultureInfo.CurrentCulture);
         }
     }
 }

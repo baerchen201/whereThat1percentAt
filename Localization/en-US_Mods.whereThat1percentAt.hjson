@@ -1,39 +1,4 @@
 Items: {
-	corruptionCompass: {
-		DisplayName: Corruption Compass (Deprecated Item)
-		Tooltip: Displays the distance to the nearest corrupted block
-	}
-
-	crimsonCompass: {
-		DisplayName: Crimson Compass (Deprecated Item)
-		Tooltip: Displays the distance to the nearest crimson block
-	}
-
-	hallowCompass: {
-		DisplayName: Hallow Compass (Deprecated Item)
-		Tooltip: Displays the distance to the nearest hallow block
-	}
-
-	corruptionMirror: {
-		DisplayName: Purple Magic Mirror (Deprecated Item)
-		Tooltip: Teleports you near the Corruption
-	}
-
-	crimsonMirror: {
-		DisplayName: Red Magic Mirror (Deprecated Item)
-		Tooltip: Teleports you near the Crimson
-	}
-
-	hallowMirror: {
-		DisplayName: Light Blue Magic Mirror (Deprecated Item)
-		Tooltip: Teleports you near the Hallow
-	}
-
-	rainbowCompass: {
-		Tooltip: Displays the distance to every type of impure block and their percentages
-		DisplayName: Rainbow Compass (Deprecated Item)
-	}
-
 	CorruptionCompass: {
 		DisplayName: Corruption Compass
 		Tooltip: Displays the distance to the nearest corruption block
@@ -66,7 +31,7 @@ Items: {
 
 	RainbowCompass: {
 		DisplayName: Rainbow Compass
-		Tooltip: Displays the distance to every type of world corruption
+		Tooltip: Displays information about every type of world corruption
 	}
 }
 
@@ -79,6 +44,8 @@ noTargetPos:
 
 Configs: {
 	CustomConfig: {
+		DisplayName: Config
+
 		randomTp: {
 			Label: Random Teleport (Magic mirrors)
 			Tooltip:
@@ -88,16 +55,14 @@ Configs: {
 				'''
 		}
 
-		DisplayName: Config
-
 		percentageUpdateInterval: {
 			Label: World biome percentage update interval
-			Tooltip: How many seconds to wait between each world biome percentage update (might cause minor lagspikes)
+			Tooltip: How many seconds to wait between each world biome percentage update
 		}
 
 		updateOnDisplay: {
 			Label: Update percentages every time they are displayed
-			Tooltip: Forces a world biome percentage update every time the percentage is shown (might cause lagspikes)
+			Tooltip: Forces a world biome percentage update every time the percentage is shown
 		}
 	}
 }

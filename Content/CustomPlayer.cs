@@ -1,8 +1,9 @@
-using System;
-using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Chat;
+using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
-using whereThat1percentAt.Items;
 
 namespace whereThat1percentAt.Content
 {
@@ -13,16 +14,13 @@ namespace whereThat1percentAt.Content
         public bool showHallowCompass;
         public bool showPercentages;
 
-        private int updateCooldown = 0;
-
+        public readonly Percentages percentages = new();
         public bool ForceUpdate
         {
-            get { return forceUpdate; }
-            set { forceUpdate = true; }
+            get => forceUpdate;
+            set => forceUpdate = true;
         }
-        bool forceUpdate = true;
-
-        public Dictionary<string, string> percentages = new Dictionary<string, string>();
+        private bool forceUpdate = true;
 
         public override void ResetInfoAccessories()
         {
@@ -44,9 +42,11 @@ namespace whereThat1percentAt.Content
                 showPercentages = true;
         }
 
+        private int updateCooldown;
+
         public override void PostUpdate()
         {
-            if (updateCooldown < 1 || forceUpdate)
+            if (updateCooldown <= 0 || forceUpdate)
             {
                 updateCooldown =
                     ModContent.GetInstance<CustomConfig>().percentageUpdateInterval * 60;
@@ -54,32 +54,15 @@ namespace whereThat1percentAt.Content
                 if (!showPercentages && !forceUpdate)
                     return;
 
-                if (!percentages.ContainsKey("co"))
-                    percentages.Add("co", null);
-                if (!percentages.ContainsKey("cr"))
-                    percentages.Add("cr", null);
-                if (!percentages.ContainsKey("h"))
-                    percentages.Add("h", null);
-
-                Tuple<List<List<Tuple<Tuple<int, int>, Tile>>>, Tuple<int, int>> ret =
-                    Scripts.countWorldTilePercentage(Lists.Corruption, Lists.Crimson, Lists.Hallow);
-                int total = ret.Item2.Item1;
-                int empty = ret.Item2.Item2;
-
-                double co = ret.Item1[0].Count / (double)(total - empty) * 100;
-                double cr = ret.Item1[1].Count / (double)(total - empty) * 100;
-                double h = ret.Item1[2].Count / (double)(total - empty) * 100;
-                percentages["co"] = Math.Round(co, 2).ToString();
-                if (co > 0 && Math.Round(co, 2) == 0)
-                    percentages["co"] = "<0.01";
-
-                percentages["cr"] = Math.Round(cr, 2).ToString();
-                if (cr > 0 && Math.Round(cr, 2) == 0)
-                    percentages["cr"] = "<0.01";
-
-                percentages["h"] = Math.Round(h, 2).ToString();
-                if (h > 0 && Math.Round(h, 2) == 0)
-                    percentages["h"] = "<0.01";
+                percentages.Corruption = Main.tile.CountWorldTilePercentage(
+                    TileID.Sets.CorruptCountCollection
+                );
+                percentages.Crimson = Main.tile.CountWorldTilePercentage(
+                    TileID.Sets.CrimsonCountCollection
+                );
+                percentages.Hallow = Main.tile.CountWorldTilePercentage(
+                    TileID.Sets.HallowCountCollection
+                );
             }
             else
                 updateCooldown--;

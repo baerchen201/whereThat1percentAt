@@ -7,7 +7,7 @@ namespace whereThat1percentAt.Items;
 
 public class RainbowCompass : ModItem
 {
-    public override string Texture => Textures.rainbowCompass;
+    public override string Texture => Textures.RAINBOW_COMPASS;
 
     public override void SetDefaults()
     {
