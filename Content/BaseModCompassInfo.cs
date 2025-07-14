@@ -7,8 +7,6 @@ using Terraria.Chat;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Config;
-using tModPorter;
 
 namespace whereThat1percentAt.Content
 {

@@ -86,14 +86,5 @@ namespace whereThat1percentAt.Content
 
             forceUpdate = false;
         }
-
-        public override void PreUpdate()
-        {
-            for (int i = 0; i < Player.inventory.Length; i++)
-            {
-                LegacyReplacements.replacePlayerLegacyItem(Player, i);
-            }
-            base.PreUpdate();
-        }
     }
 }
