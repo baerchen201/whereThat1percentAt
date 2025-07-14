@@ -18,8 +18,8 @@ public static class TilemapExtensions
     {
         closestTile = null!;
         closestDistance = float.MaxValue;
-        for (int x = 0; x < Main.maxTilesX; x++)
-        for (int y = 0; y < Main.maxTilesY; y++)
+        for (int x = 0; x < tilemap.Width; x++)
+        for (int y = 0; y < tilemap.Height; y++)
         {
             Tile tile = tilemap[x, y];
             if (tile.HasTile && tiles.Contains(tile.TileType))
@@ -82,8 +82,8 @@ public static class TilemapExtensions
         randomTile = null!;
         List<TileInfo> choices = [];
 
-        for (int x = 0; x < Main.maxTilesX; x++)
-        for (int y = 0; y < Main.maxTilesY; y++)
+        for (int x = 0; x < tilemap.Width; x++)
+        for (int y = 0; y < tilemap.Height; y++)
         {
             Tile tile = tilemap[x, y];
             if (tile.HasTile && tiles.Contains(tile.TileType))
@@ -106,8 +106,8 @@ public static class TilemapExtensions
     {
         closestTile = null!;
         closestDistance = float.MaxValue;
-        for (int x = 0; x < Main.maxTilesX; x++)
-        for (int y = 0; y < Main.maxTilesY; y++)
+        for (int x = 1; x < tilemap.Width - 1; x++)
+        for (int y = 1; y < tilemap.Height - 2; y++)
         {
             if (tilemap[x, y].HasTile)
                 continue;
@@ -118,7 +118,7 @@ public static class TilemapExtensions
                 bool isValid = true;
                 for (int localX = x - 1; localX <= x + 1; localX++)
                 {
-                    if (!isValid || localX < 0 || localX >= tilemap.Width)
+                    if (!isValid)
                     {
                         isValid = false;
                         break;
@@ -126,12 +126,6 @@ public static class TilemapExtensions
 
                     for (int localY = y - 1; localY <= y + 1; localY++)
                     {
-                        if (localY < 0 || localY >= tilemap.Height)
-                        {
-                            isValid = false;
-                            break;
-                        }
-
                         Tile tile = tilemap[localX, localY];
                         if (
                             tile.HasTile
@@ -141,11 +135,14 @@ public static class TilemapExtensions
                                     LiquidType: LiquidID.Lava or LiquidID.Shimmer
                                 }
                         )
+                        {
                             isValid = false;
+                            break;
+                        }
                     }
                 }
 
-                if (isValid)
+                if (isValid && tilemap[x, y + 2].HasUnactuatedTile)
                 {
                     closestDistance = distance;
                     closestTile = new TileInfo(tilemap[x, y], new Vector2(x, y));
