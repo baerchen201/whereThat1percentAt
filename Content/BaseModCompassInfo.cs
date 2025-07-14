@@ -12,7 +12,7 @@ namespace whereThat1percentAt.Content
 {
     public abstract class BaseModCompassInfo : InfoDisplay
     {
-        public virtual float Range => 125f;
+        public virtual int Range => 125;
         public abstract List<int> Tiles { get; }
         public abstract string TargetName { get; }
         public abstract string Percentage { get; }
@@ -30,10 +30,10 @@ namespace whereThat1percentAt.Content
                 !Main.tile.GetClosestTileOfType(
                     Main.LocalPlayer.Center.WorldToTileSpace(),
                     Tiles,
+                    Range,
                     out var tile,
                     out var distance
                 )
-                || distance > Range
             )
                 if (Main.LocalPlayer.GetModPlayer<CustomPlayer>().showPercentages)
                 {

@@ -37,6 +37,42 @@ public static class TilemapExtensions
         return closestTile != null!;
     }
 
+    public static bool GetClosestTileOfType(
+        this Tilemap tilemap,
+        Vector2 origin,
+        List<int> tiles,
+        int range,
+        out TileInfo closestTile,
+        out float closestDistance
+    )
+    {
+        if (range < 1)
+            throw new ArgumentException("Range has to be positive integer", nameof(range));
+
+        closestTile = null!;
+        closestDistance = float.MaxValue;
+
+        int xUpperBound = Math.Min((int)origin.X + range, tilemap.Width),
+            yUpperBound = Math.Min((int)origin.Y + range, tilemap.Height);
+        for (int x = Math.Max((int)origin.X - range, 0); x < xUpperBound; x++)
+        for (int y = Math.Max((int)origin.Y - range, 0); y < yUpperBound; y++)
+        {
+            Tile tile = tilemap[x, y];
+            if (tile.HasTile && tiles.Contains(tile.TileType))
+            {
+                Vector2 tilePosition = new Vector2(x, y);
+                float distance = Vector2.Distance(origin, tilePosition);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestTile = new TileInfo(tile, tilePosition);
+                }
+            }
+        }
+
+        return closestTile != null!;
+    }
+
     public static bool GetRandomTileOfType(
         this Tilemap tilemap,
         List<int> tiles,
